@@ -14,10 +14,10 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with maven
-        uses: mvn clean install
+        run: mvn clean install
 
       - name: Build docker image
-        uses: docker build -t ahmediti/ahmed-java:v${{ github.run_number }} .
+        run: docker build -t ahmediti/ahmed-java:v${{ github.run_number }} .
 
 
           
