@@ -22,10 +22,10 @@ jobs:
         run: docker build -t ahmediti/ahmed-java:v${{ github.run_number }} .
 
       - name: Login to dockerhub
-        run: docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ DOCKERPASSWORD }}
+        run: docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERPASSWORD }}
 
       - name: Push to dockerhub
-        run:  docker push  ahmediti/ahmed-java:v${{ github.run_number }}
+        run:  docker push ahmediti/ahmed-java:v${{ github.run_number }}
 
 
           
