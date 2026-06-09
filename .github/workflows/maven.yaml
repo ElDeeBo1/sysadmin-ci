@@ -1,10 +1,13 @@
 name: Java CI with maven
 on: workflow_dispatch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
     environment:
-      name: dev
+      name: ahmedeldeeb
     steps:
       - name: Checkout the code
         uses: actions/checkout@v4
@@ -27,5 +30,13 @@ jobs:
       - name: Push to dockerhub
         run:  docker push ahmediti/ahmed-java:v${{ github.run_number }}
 
+  test:
+      runs-on: ubuntu-latest
+      environment:
+        name: ahmedeldeeb
+      steps:
+        - name: test the code
+          run: sleep 30
 
-          
+
+            
